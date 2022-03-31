@@ -135,11 +135,11 @@ class ProductController extends Controller
     public function search(Request $request){
 
         $name = $request->input('name');
-        $min_price = $request->input('$min_price');
-        $max_price = $request->input('$max_price');
-        $brand_id = $request->input('$brand_id');
-        $id = $request->input('$id');
-        $available = $request->input('$available');
+        $min_price = $request->input('min_price');
+        $max_price = $request->input('max_price');
+        $brand_id = $request->input('brand_id');
+        $id = $request->input('id');
+//        $available = $request->input('available');
         try{
             $list = Product::query()
                 ->when($name, function ($q, $name) {
