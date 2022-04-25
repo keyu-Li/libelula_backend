@@ -27,10 +27,6 @@ use App\Http\Controllers\PropertiesController;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 Route::get('test', [\App\Http\Controllers\testController::class, "test"])->name('test');
 
 // user controller routes
@@ -51,18 +47,8 @@ Route::group([
 ], function () {
     Route::post('pay',[paymentController::class, "start"]);
 });
-//Route::post("login",
-//    LoginController::class);
 
-//Route::post("login", [UserController::class, "login"]);
-//Route::get("user", [UserController::class, "me"])->middleware('auth:sanctum');
 Route::post("register", [UserController::class, "register"]);
-
-
-
-// sanctum auth middleware routes
-
-
 
 
 
@@ -89,7 +75,4 @@ Route::middleware('jwt.verify')->prefix('product/')->group(function() {
     Route::put("{id}", [ProductController::class, "update"]);
     Route::delete("{id}", [ProductController::class, "delete"]);
     Route::post("adminSearch", [ProductController::class, "search"]);
-    Route::post('image/upload', [ImageController::class, "upload"])->name('image.upload');
-    Route::delete('image/{id}', [ImageController::class, "destroy"])->name('image.delete');
-//    Route::post("addProperties", [ProductController::class, "addProperties"]);
 });
